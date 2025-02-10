@@ -26,7 +26,6 @@ SECRET_KEY = 'django-insecure-0*josre!+8lv&)p*^((cm)z+r3=*va_3mkc5y)gf5%w$%kp39l
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
-
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', cast=Csv())
 
@@ -40,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'project.main'
 ]
 
 MIDDLEWARE = [
@@ -146,9 +147,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CELERY_BROKER_URL = config('CELERY_BROKER_URL')
 
 
-# CELERY_BEAT_SCHEDULE = {
-#     'every_10_seconds': {
-#         'task': 'rate_app.tasks.course_rate',
-#         'schedule': timedelta(seconds=10),
-#     },
-# }
+CELERY_BEAT_SCHEDULE = {
+    'every_1_minute': {
+        'task': 'project.main.tasks.get_currencies',
+        'schedule': timedelta(seconds=60),
+    },
+}
