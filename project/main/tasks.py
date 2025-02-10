@@ -16,14 +16,3 @@ def get_currencies():
                     currency_type=currency.value,
                     defaults={'amount': amount}
                 )
-
-
-
-        # usd_currency = currencies.json()['rates']['USD']
-        # czk_currency = currencies.json()['rates']['CZK']
-        # usd_object, _ = Currency.objects.get_or_create(currency_type=CurrencyType.USD)
-        # czk_object, _ = Currency.objects.get_or_create(currency_type=CurrencyType.CZK)
-        # usd_object.amount = usd_currency if usd_currency else usd_object.amount
-        # czk_object.amount = czk_currency if czk_currency else czk_object.amount
-        # usd_object.save()
-        # czk_object.save()

@@ -1,6 +1,5 @@
 
 /.idea
-/static
 db.sqlite3
 *.pyc
 /env
